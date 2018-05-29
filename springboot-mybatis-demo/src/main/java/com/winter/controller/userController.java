@@ -29,7 +29,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/dsp")
     String test(){
-        return "test";
+        return "test1";
     }
     public static void main(String[] args) throws Exception {
         SpringApplication.run(UserController.class, args);
