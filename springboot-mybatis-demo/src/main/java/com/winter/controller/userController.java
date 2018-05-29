@@ -5,17 +5,25 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.winter.service.user.UserService;
+import com.winter.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
 
 @Controller
 @EnableAutoConfiguration
 @RequestMapping("/user")
 
-public class userController {
+public class UserController {
+   //@Autowired
+    private UserService userService;
 
     @ResponseBody
     @RequestMapping(value = "/add")
-    String home() {
-        return "Hello ,spring boot!";
+    public int addUser(User user){
+        return userService.addUser(user);
     }
 
     @ResponseBody
@@ -24,7 +32,7 @@ public class userController {
         return "test";
     }
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(userController.class, args);
+        SpringApplication.run(UserController.class, args);
         //运行之后在浏览器中访问：http://localhost:8080/hello
     }
 }
